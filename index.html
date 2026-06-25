@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoSinergia | Incubadora de Triple Impacto</title>
+    <style>
+        /* Variables de Color */
+        :root {
+            --verde-principal: #2e7d32;
+            --verde-claro: #4caf50;
+            --azul-social: #0288d1;
+            --oscuro: #212121;
+            --claro: #f5f5f5;
+            --blanco: #ffffff;
+            --gris-texto: #666;
+        }
+
+        /* Estilos Generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--oscuro);
+            background-color: var(--claro);
+            line-height: 1.6;
+        }
+
+        /* Barra de Navegación */
+        header {
+            background-color: var(--blanco);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--verde-principal);
+        }
+
+        .logo span {
+            color: var(--azul-social);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--oscuro);
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--verde-claro);
+        }
+
+        /* Sección Hero (Principal) */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), #2e7d32;
+            height: 45vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--blanco);
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background-color: var(--verde-claro);
+            color: var(--blanco);
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--verde-principal);
+        }
+
+        /* Secciones de Contenido */
+        .container {
+            max-width: 1100px;
+            margin: 4rem auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: var(--azul-social);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Grid de Proyectos */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background-color: var(--blanco);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-img {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+            background-color: #ddd;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .tag {
+            background-color: #e8f5e9;
+            color: var(--verde-principal);
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            align-self: flex-start;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--oscuro);
+        }
+
+        .project-description {
+            color: var(--gris-texto);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        /* Bloques de impacto */
+        .impact-box {
+            background-color: var(--claro);
+            padding: 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            border-left: 4px solid var(--verde-claro);
+        }
+
+        .impact-box.social-border {
+            border-left-color: var(--azul-social);
+        }
+
+        /* Formulario de Validación */
+        .form-container {
+            background-color: var(--blanco);
+            padding: 3rem;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .btn-submit {
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        /* Pie de Página */
+        footer {
+            background-color: var(--oscuro);
+            color: var(--blanco);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de Navegación -->
+    <header>
+        <div class="logo">Eco<span>Sinergia</span></div>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#proyectos">Proyectos Destacados</a>
+            <a href="#validar">Validar Idea</a>
+        </nav>
+    </header>
+
+    <!-- Sección de Inicio -->
+    <section id="inicio" class="hero">
+        <h1>Modelos de Negocio con Triple Impacto</h1>
+        <p>Impulsamos ideas innovadoras que demuestran que la rentabilidad económica puede convivir con el bienestar social y la regeneración ambiental.</p>
+        <a href="#proyectos" class="btn">Ver Proyectos de Ejemplo</a>
+    </section>
+
+    <!-- Sección de Proyectos Destacados -->
+    <section id="proyectos" class="container">
+        <h2 class="section-title">Casos de Éxito e Innovación</h2>
+        <div class="grid">
+            
+            <!-- Ejemplo 1: Shampoo en Barra -->
+            <div class="project-card">
+                <img src="shampoo-barra.jpg" alt="Shampoo en barra artesanal" class="project-img">
+                <div class="project-content">
+                    <span class="tag">Cosmética Residuo Cero</span>
+                    <h3 class="project-title">EcoBarras: Shampoo Sólido</h3>
+                    <p class="project-description">Cosmética natural concentrada que elimina por completo la necesidad de envases plásticos y reduce el desperdicio de agua en su fabricación.</p>
+                    
+                    <div class="impact-box">
+                        <strong>🌱 Impacto Ambiental:</strong> 1 barra evita el uso de hasta 3 botellas plásticas de 250ml y mitiga químicos tóxicos en el agua.
+                    </div>
+                    <div class="impact-box social-border">
+                        <strong>🤝 Impacto Social:</strong> Producción artesanal delegada a cooperativas de mujeres rurales, fomentando el comercio justo.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ejemplo 2: Moda Circular / Textil -->
+            <div class="project-card">
+                <img src="moda-circular.jpg" alt="Ropa de materiales reciclados" class="project-img">
+                <div class="project-content">
+                    <span class="tag">Moda Circular</span>
+                    <h3 class="project-title">Hilando Futuro</h3>
+                    <p class="project-description">Transformación de retazos y desechos textiles industriales en nuevas prendas de alta calidad y diseño contemporáneo mediante upcycling.</p>
+                    
+                    <div class="impact-box">
+                        <strong>🌱 Impacto Ambiental:</strong> Reduce el uso de miles de litros de agua al evitar el cultivo y procesamiento de algodón virgen.
+                    </div>
+                    <div class="impact-box social-border">
+                        <strong>🤝 Impacto Social:</strong> Talleres de costura instalados en centros comunitarios urbanos para capacitar a jóvenes en riesgo de exclusión.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ejemplo 3: Agroecología / Alimentos -->
+            <div class="project-card">
+                <img src="huertos-urbanos.jpg" alt="Huertos comunitarios en la ciudad" class="project-img">
+                <div class="project-content">
+                    <span class="tag">Seguridad Alimentaria</span>
+                    <h3 class="project-title">Cultivos Urbanos</h3>
+                    <p class="project-description">Red de huertos verticales comunitarios instalados en techos baldíos para producir alimentos orgánicos y locales de bajo costo.</p>
